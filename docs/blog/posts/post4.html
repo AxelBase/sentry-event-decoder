@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AxelBase – Sentry Event ID Decoder & Trace Analyzer</title>
+    <link rel="icon" href="../../AxelLab-Logo.ico" />
+    <link rel="manifest" href="../../manifest.json" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#6f42c1" />
+    
+    <!-- Bootstrap + Libraries (local fallbacks) -->
+    <link rel="stylesheet" href="../../bootstrap.min.css" />
+    <script defer src="../../bootstrap.bundle.min.js"></script>
+    <script defer src="../../vis-network.min.js"></script>
+    <script defer src="../../html2canvas.min.js"></script>
+    <script defer src="../../filesaver.min.js"></script>
+
+    
+		<link href="../../_app/immutable/assets/0.BU7WIUMU.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/7.CjgDAGhu.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.CA1ht0RW.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BBNZVEmd.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CZG1GDN9.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/nPpKynpz.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CdkPxkc2.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.DLoe6gv3.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BM1I9BxW.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/D93NnB53.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Bugfqupd.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DX2M0Mfz.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.B1PwANbU.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CU6yGzzP.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/6I6ceLn2.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BK6o-9HS.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BVdRu31q.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/7.CD7S8b6j.js"><!--12qhfyh--><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/><!----><!--led0iy--><meta name="description" content="Learn exactly how the Sentry Event Decoder colors spans red (>1s), yellow (500ms–1s), or green (&lt;500ms) — and why these thresholds catch real problems."/> <meta property="og:title" content="Understanding the Red/Yellow/Green Performance Indicators"/> <meta property="og:description" content="Real-world examples showing why >1s = red, 500ms–1s = yellow, and &lt;500ms = green is the perfect balance for spotting slow requests fast."/> <meta property="og:url" content="../../blog/posts/post4"/> <meta property="og:type" content="article"/> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:creator" content="Axelbase"/><!----><title>Understanding the Red/Yellow/Green Performance Indicators | Sentry Event Decoder</title>
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[--><!----><header class="app-header"><nav><div class="nav-left"><a href="../../" class="nav-logo-link" aria-label="Home"><img src="../../AxelLab-Logo.ico" alt="AxelBase Logo" class="nav-logo"/></a> <a href="../../" class="nav-brand">AxelBase</a> <div class="bmac-container"><button class="bmac-button" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.35,22.2L12,22A10,10,0,0,1,2,12V10A2,2,0,0,1,4,8H7.2A5.13,5.13,0,0,1,12,3A5.13,5.13,0,0,1,16.8,8H20A2,2,0,0,1,22,10V12A10,10,0,0,1,12.35,22.2M4,10V12A8,8,0,0,0,12,20A8,8,0,0,0,20,12V10H16.8A5.11,5.11,0,0,1,12.5,5.12A5.15,5.15,0,0,1,7.2,10H4Z"></path></svg> <span>Buy me a coffee</span></button> <!--[!--><!--]--></div></div> <div class="nav-right"><ul><li><a class="nav-link" href="../../">Home</a></li> <li><a class="nav-link" href="../../#about">About</a></li> <li><a class="nav-link" href="../../#how-to-use">How to use</a></li> <li><a class="nav-link" href="../../#faq">FAQ</a></li> <li><a class="nav-link" href="../../blog">Blog</a></li></ul></div></nav></header> <main class="main-content"><!--[--><!----><div class="container fade-in post-layout svelte-led0iy"><div class="breadcrumbs svelte-led0iy"><a href="../../blog" class="svelte-led0iy">Blog</a> <span>/</span> <p class="svelte-led0iy">Red/Yellow/Green Indicators</p></div> <article class="prose svelte-led0iy"><h1 class="svelte-led0iy">Understanding the Red/Yellow/Green Performance Indicators</h1> <p class="post-meta svelte-led0iy">Published: November 17, 2025</p> <p class="svelte-led0iy">One glance at a Sentry Event Decoder trace tells you exactly what’s wrong — because every span is colored red, yellow, or green. These aren’t random colors. They follow strict, battle-tested rules.</p> <h2 class="svelte-led0iy">The Rules (Hard-Coded for Speed)</h2> <ul class="svelte-led0iy"><li class="svelte-led0iy"><strong>Greater than 1000ms → Red</strong>: Anything over one second is a user-perceived delay. Red means “fix this now”.</li> <li class="svelte-led0iy"><strong>501–1000ms → Yellow</strong>: Noticeable but not catastrophic. Worth investigating.</li> <li class="svelte-led0iy"><strong>≤ 500ms → Green</strong>: Fast. Humans don’t notice delays under half a second.</li> <li class="svelte-led0iy"><strong>Any error status → Red + red border</strong>: Overrides duration. A 50ms span that fails is still a critical problem.</li></ul> <h2 class="svelte-led0iy">Why These Thresholds Work</h2> <p class="svelte-led0iy">I didn’t pick them randomly. Google’s RAIL model and real user studies show:</p> <ul class="svelte-led0iy"><li class="svelte-led0iy">0–100ms: Instant</li> <li class="svelte-led0iy">100–500ms: Slight perceptible delay</li> <li class="svelte-led0iy">Greater than 1000ms: Users lose focus and feel the app is broken</li></ul> <h2 class="svelte-led0iy">Real Example: Checkout Flow</h2> <p class="svelte-led0iy">Last week a client saw 40% of checkouts taking over 8 seconds. The trace showed:</p> <ul class="svelte-led0iy"><li class="svelte-led0iy">One red db.query (2.8s)</li> <li class="svelte-led0iy">Three yellow http.client calls (700–900ms each)</li> <li class="svelte-led0iy">Everything else green</li></ul> <p class="svelte-led0iy">Fix: Added an index. P95 dropped from 8.2s to 890ms in one deploy.</p> <h2 class="svelte-led0iy">FAQ</h2> <details class="svelte-led0iy"><summary class="svelte-led0iy">Can I change the thresholds?</summary> <p class="svelte-led0iy">Yes — fork the repo and edit two lines in traceTree.ts. Takes 30 seconds.</p></details> <details class="svelte-led0iy"><summary class="svelte-led0iy">Why not use percentiles?</summary> <p class="svelte-led0iy">Percentiles are great for dashboards. When debugging a single bad request, absolute time matters more.</p></details> <p class="italic-note svelte-led0iy">Red means pain. Yellow means caution. Green means go. That’s all you need to know in an incident.</p></article></div><!----><!--]--></main> <footer class="app-footer"><div class="footer-content"><span class="copyright">© 2025 AxelBase • Oslo, Norway</span> <div class="footer-links"><a href="../../privacy">Privacy Policy</a> <a href="../../terms">Terms of Use</a> <a href="https://github.com/AxelBase/sentry-event-decoder" target="_blank" rel="noopener" class="ms-3">GitHub</a></div></div></footer><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1psuj07 = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						assets: "/sentry-event-decoder"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.CA1ht0RW.js"),
+						import("../../_app/immutable/entry/app.DLoe6gv3.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 7],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>
