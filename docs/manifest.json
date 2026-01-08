@@ -1,8 +1,0 @@
-{
-    "name": "Sentry Event ID Decoder & Trace Analyzer",
-    "short_name": "Sentry Decoder",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#0f0f0f",
-    "theme_color": "#0f0f0f"
-}

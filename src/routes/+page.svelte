@@ -105,6 +105,7 @@ Please switch to "Paste JSON Manually" below.
 
 <svelte:head>
   <title>AxelBase – Sentry Event ID Decoder & Trace Analyzer</title>
+  <meta name="google-site-verification" content="EA9hfLHMuiCZI5ov0iGdJqQw50HtIXlBqJf8d9_bw-U" />
   <meta name="description" content="Paste any Sentry event JSON → get a beautiful interactive trace tree in <3s. 100% offline, private, open-source." />
 </svelte:head>
 

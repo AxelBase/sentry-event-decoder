@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://sentry-event-decoder.vercel.app/sitemap.xml
